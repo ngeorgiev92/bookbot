@@ -1,15 +1,9 @@
-def get_book_text(filedir):
-    with open(filedir) as f:
-        text = f.read()
-    return text
+from stats import count_words
+from stats import get_book_text
+from stats import count_by_character
 
-def count_words(filedir):
-    with open(filedir) as f:
-        text = f.read()
-    word_arr = text.split()
-    return len(word_arr)
 
 def main():
-    print(f"{count_words("books/frankenstein.txt")} words found in the document")
+    print(f"{count_by_character("books/frankenstein.txt")}")
 
 main()
