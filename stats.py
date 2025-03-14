@@ -1,25 +1,30 @@
-def count_words(filedir):
-    with open(filedir) as f:
-        text = f.read()
+def count_words(text):
     word_arr = text.split()
     return len(word_arr)
 
-def get_book_text(filedir):
-    with open(filedir) as f:
-        text = f.read()
-    return text
+def get_book_text(path):
+    with open(path) as f:
+        return f.read()
 
-def count_by_character(filedir):
-    with open(filedir) as f:
-        text = f.read()
-    characters = list(text)
+def count_by_character(text):
     characters_dict = {}
-    for character in characters :
-       lower_case_character = character.lower()
-       if not lower_case_character in characters_dict:
-           characters_dict[lower_case_character] = 1
-       else:
-           characters_dict[lower_case_character] += 1
+    for character in text:
+        lower_case_character = character.lower()
+        if lower_case_character in characters_dict:
+            characters_dict[lower_case_character] += 1
+        else:
+            characters_dict[lower_case_character] = 1
     return characters_dict
+
+def sort_on(dictionary):
+    return dictionary["count"]
+
+def make_sorted_list(dictionary):
+    list = []
+    for entry in dictionary:
+        list.append({"character": entry, "count": dictionary[entry]})
+    list.sort(reverse=True, key=sort_on)
+    return list
+
 
 
